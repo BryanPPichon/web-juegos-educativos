@@ -1,0 +1,651 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400&family=Vast+Shadow&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+.menu-grid {
+    display: flex;
+    /* Flexbox para colocar las columnas una al lado de la otra */
+    justify-content: center;
+    /* Centra las columnas horizontalmente */
+    gap: 20px;
+    /* Espacio entre las columnas */
+    margin-top: 20px;
+    /* Espaciado superior para alejar los botones del título */
+}
+
+/* Estilos para las columnas */
+.column {
+    display: flex;
+    flex-direction: column;
+    /* Asegura que los botones dentro de la columna se apilen verticalmente */
+    gap: 20px;
+    /* Espacio entre los botones dentro de cada columna */
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(180deg, #2C2C54, #1A1A40);
+    color: #FF6F61;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    position: relative;
+}
+
+h1 {
+    font-size: 48px;
+    margin: 10px 0;
+}
+
+h2 {
+    font-size: 35px;
+    text-align: center;
+    color: #ec780C;
+    letter-spacing: 5px;
+}
+
+p {
+    font-size: 18px;
+    letter-spacing: 2px;
+    color: #FFFFFF;
+}
+
+.menu {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    /* Para ocultar sin perder layout */
+    visibility: hidden;
+    /* Menús ocultos por defecto */
+    width: 100%;
+    /* Para centrar el contenido */
+    height: 100%;
+    /* Para que ocupe toda la pantalla */
+}
+
+.menu.active {
+    visibility: visible;
+    /* Mostrar el menú activo */
+}
+
+.menu-button {
+    background-color: #FF6F61;
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    margin: 15px 0;
+    /* Espacio entre los botones */
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 18px;
+    width: 200px;
+    /* Ancho fijo para los botones */
+}
+
+.menu-button:hover {
+    background-color: #FF3B2F;
+}
+
+.menu-button:active {
+    background-color: #FF2200;
+}
+
+.menu h1,
+.menu p {
+    color: #FF6F61;
+}
+
+.button-back {
+    position: fixed;
+    /* Hace que el botón sea fijo en la pantalla */
+    bottom: 20px;
+    /* Distancia desde el fondo de la pantalla */
+    right: 20px;
+    /* Distancia desde la derecha de la pantalla */
+    padding: 15px 40px;
+    /* Espaciado del botón */
+    margin: 15px 0;
+    background-color: #FF6F61;
+    /* Color de fondo (puedes cambiarlo) */
+    color: white;
+    /* Color del texto */
+    border: none;
+    /* Sin borde */
+    border-radius: 30px;
+    /* Bordes redondeados */
+    cursor: pointer;
+    /* Cambia el cursor al pasar el mouse */
+    font-size: 18px;
+    /* Tamaño de fuente */
+    z-index: 100;
+    /* Asegura que esté por encima de otros elementos */
+    width: 200px;
+}
+
+.button-back:hover {
+    background-color: #FF3B2F;
+    /* Cambia el color de fondo al pasar el mouse (puedes cambiarlo) */
+}
+
+/* ==================================================== */
+/* CSS PARA EL JUEGO DE PALABRAS */
+/* ==================================================== */
+
+.contenedor {
+    max-width: 500px;
+    margin: auto;
+}
+
+.contenedor .fila {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.contenedor .fila .palabra {
+    width: 45%;
+    color: #ff6961;
+    font-size: 25px;
+    padding: 10px;
+    border-radius: 30px;
+    font-weight: bold;
+    border: 2px solid #3b31ac;
+}
+
+.contenedor input {
+    width: 45%;
+    text-align: center;
+    color: #000;
+    font-size: 25px;
+    border-radius: 30px;
+    border: 2px solid #3b31ac;
+    outline: none;
+    background: #1b1634;
+    color: #ff6961;
+}
+
+but {
+    border: none;
+    background-color: #3b31ac;
+    color: #fff;
+    display: block;
+    margin: 30px auto;
+    width: fit-content;
+    padding: 7px 10px;
+    border-radius: 30px;
+    font-size: 20px;
+    cursor: pointer;
+    animation: zoom 1.5s infinite linear;
+}
+
+.correcta {
+    color: #2fff00 !important;
+    transition: .5s;
+}
+
+@keyframes zoom {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.niveles {
+    background-color: #0e0d12;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+.nivel {
+    background-color: #353444;
+    width: 80px;
+    height: 80px;
+    margin: 20px;
+    position: relative;
+    border-radius: 20px;
+    transition: .6s;
+}
+
+.nivel i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 40px;
+    color: #000;
+}
+
+.completado {
+    background-color: #47a432;
+}
+
+.completado i {
+    color: #fff !important;
+}
+
+/* ==================================================== */
+/* CSS PARA EL JUEGO DE ADIVINA LA BANDERA */
+/* ==================================================== */
+
+/* PANTALLA INICIO */
+#pantalla-inicial {
+    display: block;
+    text-align: center;
+    font-size: 30px;
+}
+
+#pantalla-inicial {
+    margin: 60px 0;
+}
+
+.btn {
+    border: none;
+    background: #580078;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+}
+
+/* PANTALLA juego */
+#pantalla-juego {
+    display: none;
+}
+
+.pantalla-juego {
+    max-width: 800px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+.pantalla-juego img {
+    max-width: 400px;
+    width: 100%;
+}
+
+.opciones {
+    max-width: 400px;
+    margin: auto;
+}
+
+.opcion {
+    display: flex;
+    position: relative;
+    align-items: center;
+    max-width: 400px;
+    margin: 30px auto;
+    cursor: pointer;
+}
+
+.opcion .letra {
+    background-color: #580078;
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    border-radius: 50%;
+    line-height: 35px;
+    border: 5px solid #fff;
+    position: relative;
+}
+
+.opcion .nombre {
+    background: #fff;
+    width: 100%;
+    font-size: 25px;
+    position: absolute;
+    margin-left: 30px;
+    z-index: -2;
+    border-radius: 0 20px 20px 0;
+    padding: 7px 0 7px 30px;
+}
+
+/* clases que se aplicará cuando haya acertada la opcion  */
+.opcion .nombreAcertada {
+    background-color: yellowgreen;
+    color: #fff;
+}
+
+.opcion .letraAcertada {
+    background-color: yellowgreen;
+    color: #fff;
+}
+
+/* clases que se aplicaran cuando se equivoque en la opcion elegida */
+.opcion .nombreNoAcertada {
+    background-color: darkred;
+    color: #fff;
+}
+
+.opcion .letraNoAcertada {
+    background-color: darkred;
+    color: #fff;
+}
+
+/* PANTALLA final */
+#pantalla-final {
+    display: none;
+    text-align: center;
+}
+
+#pantalla-final #numCorrectas {
+    background-color: chartreuse;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 5px solid #fff;
+}
+
+#pantalla-final #numIncorrectas {
+    background-color: darkred;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 5px solid #fff;
+}
+
+/* ==================================================== */
+/* CSS PARA EL JUEGO DE OPERACIONES */
+/* ==================================================== */
+
+.container {
+    max-width: 500px;
+    background: linear-gradient(#373763, #3c3c74);
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.container-operadores {
+    display: flex;
+    justify-content: center;
+}
+
+.container-operadores button {
+    border: none;
+    margin: 10px 20px;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    border: 1px solid black;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.container-operadores button:hover {
+    transform: scale(1.3);
+}
+
+.container-operacion {
+    margin: 20px;
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+    border: 1px solid #fff;
+    background-color: #fff;
+    box-shadow: 5px 5px 5px #000;
+    padding: 6px 0;
+}
+
+.container-operacion input {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid rgb(38, 86, 196);
+    font-size: 45px;
+    width: 70px;
+    text-align: center;
+    outline: none;
+}
+
+#corregir {
+    background-color: #fff;
+    border: none;
+    font-size: 18px;
+    border: 1px solid #000;
+    padding: 10px;
+    transition: .5s;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#corregir:hover {
+    transform: scale(1.2);
+}
+
+.activado {
+    background-color: rgb(61, 118, 198);
+    color: #fff;
+    transform: (1.3);
+}
+
+i {
+    font-size: 25px;
+    display: inline-block;
+    margin: 5px;
+}
+
+#msj_correccion {
+    text-align: left;
+}
+
+.fa-face-frown {
+    color: red;
+    animation: zoom .5s forwards
+}
+
+.fa-face-grin {
+    color: rgb(103, 82, 241);
+    animation: zoom .5s forwards
+}
+
+/* ==================================================== */
+/* CSS PARA EL JUEGO DE PREGUNTAS */
+/* ==================================================== */
+
+.contenedor-preguntas {
+    width: 98vw;
+    height: 97vh;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.encabezado {
+    position: relative;
+    background: white;
+    min-width: 300px;
+    width: 70%;
+    max-width: 600px;
+    padding: 10px;
+}
+
+.categoria {
+    opacity: 0.3;
+    text-align: left;
+}
+
+.pregunta {
+    padding: 10px;
+}
+
+.imagen {
+    object-fit: cover;
+    height: 0px;
+    width: 0px;
+}
+
+.bton {
+    background: white;
+    width: 60%;
+    max-width: 550px;
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.bton:hover {
+    transform: scale(1.05);
+}
+
+.numero {
+    position: absolute;
+    opacity: 0.3;
+    top: 10px;
+    right: 10px;
+}
+
+.puntaje {
+    padding: 10px;
+    color: white;
+}
+
+/* ==================================================== */
+/* CSS PARA EL JUEGO DE MEMORIA */
+/* ==================================================== */
+
+.game {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.controls {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+button {
+    background: #282A3A;
+    color: #FFF;
+    border-radius: 5px;
+    padding: 10px 20px;
+    border: 0;
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18pt;
+    font-weight: bold;
+}
+/* .disabled {
+    color: #757575;
+} */
+.stats {
+    color: #FFF;
+    font-size: 14pt;
+    font-weight: bold;
+}
+.board-container {
+    position: relative;
+}
+.board,
+.win {
+    border-radius: 5px;
+    box-shadow: 0 25px 50px rgb(33 33 33 / 25%);
+    background: linear-gradient(135deg,  #03001e 0%,#7303c0 0%,#ec38bc 50%, #fdeff9 100%);
+    transition: transform .6s cubic-bezier(0.4, 0.0, 0.2, 1);
+    backface-visibility: hidden;
+}
+.board {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-gap: 20px;
+}
+.board-container.flipped .board {
+    transform: rotateY(180deg) rotateZ(50deg);
+}
+.board-container.flipped .win {
+    transform: rotateY(0) rotateZ(0);
+}
+.card {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+}
+.card-front,
+.card-back {
+    position: absolute;
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+    background: #282A3A;
+    transition: transform .6s cubic-bezier(0.4, 0.0, 0.2, 1);
+    backface-visibility: hidden;
+}
+.card-back {
+    transform: rotateY(180deg) rotateZ(50deg);
+    font-size: 28pt;
+    user-select: none;
+    text-align: center;
+    line-height: 100px;
+    background: #FDF8E6;
+}
+.card.flipped .card-front {
+    transform: rotateY(180deg) rotateZ(50deg);
+}
+.card.flipped .card-back {
+    transform: rotateY(0) rotateZ(0);
+}
+.win {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background: #FDF8E6;
+    transform: rotateY(180deg) rotateZ(50deg);
+}
+.win-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 21pt;
+    color: #282A3A;
+}
+.highlight {
+    color: #7303c0;
+}
+
+/* ==================================================== */
+/* CSS PARA EL JUEGO DEL AHORCADO */
+/* ==================================================== */
+
+#pantalla{
+    border: groove 8px gold;
+    background: #5b5b9b;
+}

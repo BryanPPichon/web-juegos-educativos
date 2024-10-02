@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.0/dist/sweetalert2.all.min.js"></script>
+  <title>Juegos educativos</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+  <div id="main-menu" class="menu active">
+    <!-- El menú principal empieza visible -->
+    <h1>MENU PRINCIPAL</h1>
+    <p>ELIGE UN JUEGO</p>
+    <div class="menu-grid">
+      <div class="column">
+        <button class="menu-button" onmouseover="playHoverSound()" onclick="openMenu('Word-Scramble'); playClickSound()">
+          Word Scramble
+        </button>
+        <button class="menu-button" onmouseover="playHoverSound()" onclick="openMenu('adivina-bandera'); playClickSound()">
+          Adivina la Bandera
+        </button>
+        <button class="menu-button" onmouseover="playHoverSound()" onclick="openMenu('operaciones'); playClickSound()">
+          Operaciones Matemáticas
+        </button>
+      </div>
+
+      <div class="column">
+        <button class="menu-button" onmouseover="playHoverSound()" onclick="openMenu('preguntas'); playClickSound()">
+          Preguntas Aleatorias
+        </button>
+        <button class="menu-button" onmouseover="playHoverSound()" onclick="openMenu('memoria'); playClickSound()">
+          Juego de Memoria
+        </button>
+        <button class="menu-button" id="startButton" nmouseover="playHoverSound()" onclick="openMenu('ahorcado'); playClickSound()">
+          Juego del Ahorcado
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="Word-Scramble" class="menu">
+    <h1>Decodifica la Palabra</h1>
+    <div class="contenedor" id="contenedor"></div>
+    <div class="niveles">
+      <div class="nivel">
+        <i class="fa-solid fa-apple-whole"></i>
+      </div>
+      <div class="nivel">
+        <i class="fa-solid fa-music"></i>
+      </div>
+      <div class="nivel">
+        <i class="fa-solid fa-dog"></i>
+      </div>
+      <div class="nivel">
+        <i class="fa-solid fa-earth-americas"></i>
+      </div>
+    </div>
+    <script src="js/word-scramble.js"></script>
+
+    <button class="button-back" onmouseover="playHoverSound()" onclick="openMenu('main-menu'); playClickSound()">
+      Back
+    </button>
+  </div>
+
+  <div id="adivina-bandera" class="menu">
+    <h1>ADIVINA LA BANDERA</h1>
+    <!-- Pantalla inicial -->
+    <div id="pantalla-inicial">
+      <p>¿A qué pais pertenece la bandera?</p>
+      <button class="btn" onclick="comenzarJuego()">COMENZAR A JUGAR</button>
+    </div>
+    <!-- Pantalla juego -->
+    <div class="pantalla-juego" id="pantalla-juego">
+      <img src="img/ad.svg" alt="" id="imgBandera" />
+      <div class="opciones">
+        <div class="opcion" id="op0" onclick="comprobarRespuesta(0)">
+          <div class="letra" id="l0">A</div>
+          <div class="nombre" id="n0">OPCION A</div>
+        </div>
+        <div class="opcion" id="op1" onclick="comprobarRespuesta(1)">
+          <div class="letra" id="l1">B</div>
+          <div class="nombre" id="n1">OPCION B</div>
+        </div>
+        <div class="opcion" id="op2" onclick="comprobarRespuesta(2)">
+          <div class="letra" id="l2">C</div>
+          <div class="nombre" id="n2">OPCION C</div>
+        </div>
+      </div>
+    </div>
+    <!-- Pantalla final -->
+    <div id="pantalla-final">
+      <h2>CORRECTAS: <span id="numCorrectas">3</span></h2>
+      <h2>INCORRECTAS: <span id="numIncorrectas">2</span></h2>
+      <button class="btn" onclick="volverAlInicio()">Reiniciar Juego</button>
+    </div>
+    <script src="js/adivina-bandera.js"></script>
+    <button class="button-back" onmouseover="playHoverSound()" onclick="openMenu('main-menu'); playClickSound()">
+      Back
+    </button>
+  </div>
+
+  <div id="operaciones" class="menu">
+    <div class="container">
+      <h2>Ejercicios de Operaciones Matemáticas</h2>
+      <section class="container-operadores">
+        <button id="suma" onclick="btnSumar()">
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <button id="resta" onclick="btnResta()">
+          <i class="fa-solid fa-minus"></i>
+        </button>
+        <button id="producto" onclick="btnProducto()">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <button id="division" onclick="btnDivision()">
+          <i class="fa-solid fa-divide"></i>
+        </button>
+      </section>
+      <section class="container-operacion">
+        <span id="num1"></span>
+        <span id="operacion"></span>
+        <span id="num2"></span>
+        <span> = </span>
+        <input type="text" id="respuesta_usuario" />
+      </section>
+      <section id="msj_correccion"></section>
+    </div>
+    <script src="js/operaciones.js"></script>
+    <button class="button-back" onmouseover="playHoverSound()" onclick="openMenu('main-menu'); playClickSound()">
+      Back
+    </button>
+  </div>
+
+  <div id="preguntas" class="menu">
+    <div class="contenedor-preguntas">
+      <div class="puntaje" id="puntaje"></div>
+      <div class="encabezado">
+        <div class="categoria" id="categoria"></div>
+        <div class="numero" id="numero"></div>
+        <div class="pregunta" id="pregunta"></div>
+        <img src="#" class="imagen" id="imagen">
+      </div>
+      <div class="bton" id="bton1" onclick="oprimir_btn(0)"></div>
+      <div class="bton" id="bton2" onclick="oprimir_btn(1)"></div>
+      <div class="bton" id="bton3" onclick="oprimir_btn(2)"></div>
+      <div class="bton" id="bton4" onclick="oprimir_btn(3)"></div>
+
+      <script src="js/preguntas.js"></script>
+    </div>
+    <button class="button-back" onmouseover="playHoverSound()" onclick="openMenu('main-menu'); playClickSound()">
+      Back
+    </button>
+  </div>
+
+  <div id="memoria" class="menu">
+    <!-- <h1>Juego de Memoria</h1> -->
+    <div class="game">
+      <div class="controls">
+        <button id="start-button">Start</button>
+        <div class="stats">
+          <div class="moves">0 movimientos.</div>
+          <div class="timer">Tiempo: 0 segundos</div>
+        </div>
+      </div>
+      <div class="board-container">
+        <div class="board" data-dimension="4"></div>
+        <div class="win">Ganaste!</div>
+      </div>
+    </div>
+    <script src="js/memoria.js"></script>
+    <button class="button-back" onmouseover="playHoverSound()" onclick="openMenu('main-menu'); playClickSound()">
+      Back
+    </button>
+  </div>
+
+  <div id="ahorcado" class="menu">
+    <h1>Juego del Ahorcado</h1>
+    <canvas id="pantalla" width="960px" height="450px"> <!-- etiqueta del canvas con sus medidas en la pantalla -->
+      Tu navegador no soporta Canvas.
+  </canvas>
+  <!-- El boton que nos sirve para recargar la pagina y asi generar una nueva palabra y volver a jugar -->
+  <script src="js/ahorcado.js"></script>
+  <button id="boton-volverjugar" type="reset" onclick="javascript:window.location.reload();">Volver a Jugar</button>
+    <button class="button-back" onmouseover="playHoverSound()" onclick="openMenu('main-menu'); playClickSound()">
+      Back
+    </button>
+  </div>
+
+  <audio id="hover-sound" src="sounds/mouse_over.mp3" preload="auto"></audio>
+  <audio id="click-sound" src="sounds/mouse_clic.mp3" preload="auto"></audio>
+  <audio id="background-music" src="sounds/background-music.mp3" autoplay loop preload="auto"></audio>
+
+  <script src="js/script.js"></script>
+</body>
+
+</html>
