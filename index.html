@@ -16,16 +16,29 @@
 </head>
 
 <body>
+
+  <div class="video-background">
+    <video autoplay muted loop id="bg-video">
+      <source src="img/fondo.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </div>
+
   <div id="main-menu" class="menu active">
     <!-- El menú principal empieza visible -->
     <h1>MENU PRINCIPAL</h1>
     <p>ELIGE UN JUEGO</p>
     <div class="menu-grid">
       <div class="column">
-        <button class="menu-button" onmouseover="playHoverSound()" onclick="openMenu('Word-Scramble'); playClickSound()">
+        <button class="menu-button" onmouseover="playHoverSound()" onclick="openMenu('snake'); playClickSound()">
+          Snake Matematico
+        </button>
+        <button class="menu-button" onmouseover="playHoverSound()"
+          onclick="openMenu('Word-Scramble'); playClickSound()">
           Word Scramble
         </button>
-        <button class="menu-button" onmouseover="playHoverSound()" onclick="openMenu('adivina-bandera'); playClickSound()">
+        <button class="menu-button" onmouseover="playHoverSound()"
+          onclick="openMenu('adivina-bandera'); playClickSound()">
           Adivina la Bandera
         </button>
         <button class="menu-button" onmouseover="playHoverSound()" onclick="openMenu('operaciones'); playClickSound()">
@@ -35,16 +48,37 @@
 
       <div class="column">
         <button class="menu-button" onmouseover="playHoverSound()" onclick="openMenu('preguntas'); playClickSound()">
+          Juego nuevo 2
+        </button>
+        <button class="menu-button" onmouseover="playHoverSound()" onclick="openMenu('preguntas'); playClickSound()">
           Preguntas Aleatorias
         </button>
         <button class="menu-button" onmouseover="playHoverSound()" onclick="openMenu('memoria'); playClickSound()">
           Juego de Memoria
         </button>
-        <button class="menu-button" id="startButton" nmouseover="playHoverSound()" onclick="openMenu('ahorcado'); playClickSound()">
+        <button class="menu-button" id="startButton" nmouseover="playHoverSound()"
+          onclick="openMenu('ahorcado'); playClickSound()">
           Juego del Ahorcado
         </button>
       </div>
     </div>
+  </div>
+
+  <div id="snake" class="menu">
+    <h1>Snake Game Matematico</h1>
+    <div id="menu">
+      <button class="menu-button" onclick="startGame('normal')">Modo Normal</button>
+      <button class="menu-button" onclick="startGame('acortar')">Modo Acortar</button>
+  </div>
+  <div id="gameContainer">
+      <h2 id="score">Puntuación: 0</h2>
+      <h3 id="operation">Operación: </h3>
+      <canvas id="gameCanvas" width="600" height="600"></canvas>
+  </div>
+    <script src="js/snake.js"></script>
+    <button class="button-back" onmouseover="playHoverSound()" onclick="openMenu('main-menu'); playClickSound()">
+      Back
+    </button>
   </div>
 
   <div id="Word-Scramble" class="menu">
@@ -65,7 +99,6 @@
       </div>
     </div>
     <script src="js/word-scramble.js"></script>
-
     <button class="button-back" onmouseover="playHoverSound()" onclick="openMenu('main-menu'); playClickSound()">
       Back
     </button>
@@ -186,10 +219,10 @@
     <h1>Juego del Ahorcado</h1>
     <canvas id="pantalla" width="960px" height="450px"> <!-- etiqueta del canvas con sus medidas en la pantalla -->
       Tu navegador no soporta Canvas.
-  </canvas>
-  <!-- El boton que nos sirve para recargar la pagina y asi generar una nueva palabra y volver a jugar -->
-  <script src="js/ahorcado.js"></script>
-  <button id="boton-volverjugar" type="reset" onclick="javascript:window.location.reload();">Volver a Jugar</button>
+    </canvas>
+    <!-- El boton que nos sirve para recargar la pagina y asi generar una nueva palabra y volver a jugar -->
+    <script src="js/ahorcado.js"></script>
+    <button id="boton-volverjugar" type="reset" onclick="javascript:window.location.reload();">Volver a Jugar</button>
     <button class="button-back" onmouseover="playHoverSound()" onclick="openMenu('main-menu'); playClickSound()">
       Back
     </button>
