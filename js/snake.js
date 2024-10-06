@@ -12,15 +12,15 @@ let gameInterval;
 let speed = 150; // Velocidad inicial
 let mode = "normal";
 
-function startGame(selectedMode) {
+function strGame(selectedMode) {
     mode = selectedMode;
     document.getElementById('menu').style.display = 'none';
     document.getElementById('gameContainer').style.display = 'flex';
-    resetGame();
+    rstGame();
     gameInterval = setInterval(moveSnake, speed);
 }
 
-function resetGame() {
+function rstGame() {
     snake = [{ x: 200, y: 200 }];
     dx = 20; dy = 0;
     score = 0;

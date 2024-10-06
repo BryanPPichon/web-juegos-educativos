@@ -1,3 +1,4 @@
+(function() {
 /* Variables */
 var ctx;
 var canvas;
@@ -278,3 +279,4 @@ function iniciarJuego() {
 
 // Agregar evento al botón
 document.getElementById("startButton").addEventListener("click", iniciarJuego);
+})();

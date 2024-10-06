@@ -46,10 +46,13 @@
         </button>
       </div>
 
+    
       <div class="column">
-        <button class="menu-button" onmouseover="playHoverSound()" onclick="openMenu('preguntas'); playClickSound()">
-          Juego nuevo 2
+        <!--
+        <button class="menu-button" onmouseover="playHoverSound()" onclick="openMenu('drawsum'); playClickSound(); loadScript()">
+          Sumar con Lineas
         </button>
+        -->
         <button class="menu-button" onmouseover="playHoverSound()" onclick="openMenu('preguntas'); playClickSound()">
           Preguntas Aleatorias
         </button>
@@ -57,7 +60,7 @@
           Juego de Memoria
         </button>
         <button class="menu-button" id="startButton" nmouseover="playHoverSound()"
-          onclick="openMenu('ahorcado'); playClickSound()">
+          onclick="openMenu('ahorcado'); playClickSound(); loadScript()">
           Juego del Ahorcado
         </button>
       </div>
@@ -67,14 +70,14 @@
   <div id="snake" class="menu">
     <h1>Snake Game Matematico</h1>
     <div id="menu">
-      <button class="menu-button" onclick="startGame('normal')">Modo Normal</button>
-      <button class="menu-button" onclick="startGame('acortar')">Modo Acortar</button>
-  </div>
-  <div id="gameContainer">
+      <button class="menu-button" onclick="strGame('normal')">Modo Normal</button>
+      <button class="menu-button" onclick="strGame('acortar')">Modo Acortar</button>
+    </div>
+    <div id="gameContainer">
       <h2 id="score">Puntuación: 0</h2>
       <h3 id="operation">Operación: </h3>
       <canvas id="gameCanvas" width="600" height="600"></canvas>
-  </div>
+    </div>
     <script src="js/snake.js"></script>
     <button class="button-back" onmouseover="playHoverSound()" onclick="openMenu('main-menu'); playClickSound()">
       Back
@@ -173,6 +176,19 @@
     </button>
   </div>
 
+  <div id="drawsum" class="menu">
+    <script>
+      document.getElementById("drawsum").addEventListener("click", function () {
+        drawsum.start(); // Iniciar el juego del ahorcado
+      });
+    </script>
+    <script src="js/phaser.min.js"></script>
+    <script src = "js/game.js"></script>
+    <button class="button-back" onmouseover="playHoverSound()" onclick="openMenu('main-menu'); playClickSound()">
+      Back
+    </button>
+  </div>
+
   <div id="preguntas" class="menu">
     <div class="contenedor-preguntas">
       <div class="puntaje" id="puntaje"></div>
@@ -216,6 +232,11 @@
   </div>
 
   <div id="ahorcado" class="menu">
+    <script>
+      document.getElementById("ahorcado").addEventListener("click", function () {
+        ahorcado.start(); // Iniciar el juego del ahorcado
+      });
+    </script>
     <h1>Juego del Ahorcado</h1>
     <canvas id="pantalla" width="960px" height="450px"> <!-- etiqueta del canvas con sus medidas en la pantalla -->
       Tu navegador no soporta Canvas.
